@@ -4,16 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Properties;
-import java.util.StringTokenizer;
-import java.util.UUID;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -425,7 +416,8 @@ public class MailServices {
 			messageBodyPart.setDataHandler(new DataHandler(source));
 			// 添加附件的标题
 			// 这里很重要，通过下面的Base64编码的转换可以保证你的中文附件标题名在发送时不会变成乱码
-			sun.misc.BASE64Encoder enc = new sun.misc.BASE64Encoder();
+			//sun.misc.BASE64Encoder enc = new sun.misc.BASE64Encoder();
+			Base64.Encoder enc = Base64.getMimeEncoder();
 			messageBodyPart.setFileName("=?GBK?B?"+ enc.encode(filename.getBytes()) + "?=");
 			multipart.addBodyPart(messageBodyPart);
 			
