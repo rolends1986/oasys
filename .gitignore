@@ -1,2 +1,6 @@
 /target/
 .idea/artifacts/
+.DS_Store
+.idea/
+
+.idea/jarRepositories.xml
