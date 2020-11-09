@@ -74,13 +74,25 @@ oasys是一个OA办公自动化系统，使用Maven进行项目管理，基于sp
 ![通讯录.png](https://images.gitee.com/uploads/images/2019/0927/141251_bcf9cbda_1277461.png)
 ```shell script
 apt-get update
-apt-get install maven git -y
+apt-get install   git wget -y
+
+wget https://repo.huaweicloud.com/java/jdk/8u191-b12/jdk-8u191-linux-x64.tar.gz
+tar -zvxf ./jdk-8u191-linux-x64.tar.gz 
+update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0_191/bin/java" 1
+update-alternatives --set java /usr/lib/jvm/jdk1.8.0_191/bin/java
+
+wget https://mirror-hk.koddos.net/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+tar -zvxf ./apache-maven-3.6.3-bin.tar.gz 
+export PATH=/usr/lib/jvm/apache-maven-3.6.3/bin:$PATH
+echo "export PATH=/usr/lib/jvm/apache-maven-3.6.3/bin:$PATH">~/.bashrc 
+
 git clone https://github.com/rolends1986/oasys.git
 cd oasys
 mkdir temp
 chmod -R 777 ./temp
 mvn
 #mvn exec:java -Dstart-class="cn.gson.oasys.OasysApplication"
-mvn install
-java -jar ./target/oasys-0.0.1-SNAPSHOT.war
+#mvn install
+#java -jar ./target/oasys-0.0.1-SNAPSHOT.war
+mvn spring-boot:run
 ```
