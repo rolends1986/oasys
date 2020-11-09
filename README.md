@@ -77,7 +77,10 @@ apt-get update
 apt-get install maven git -y
 git clone https://github.com/rolends1986/oasys.git
 cd oasys
+mkdir temp
+chmod -R 777 ./temp
 mvn
-mvn exec:java -Dstart-class="cn.gson.oasys.OasysApplication"
-
+#mvn exec:java -Dstart-class="cn.gson.oasys.OasysApplication"
+mvn install
+java -jar ./target/oasys-0.0.1-SNAPSHOT.war
 ```
